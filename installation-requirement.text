@@ -1,0 +1,14 @@
+npm install react-redux
+npm i redux-thunk
+npm i redux-logger
+
+//npm install react-redux redux-thunk redux-logger
+
+
+
+Prefix	Description
+rdat→	Creates const for Action type
+rdac→	Creates Redux Action
+rdr→	Creates Redux Reducer
+rdcr→	Creates Redux Combine Reducers
+rds→	Creates Redux Store

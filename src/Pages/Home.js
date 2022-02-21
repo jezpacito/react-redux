@@ -7,7 +7,11 @@ import UserList from './UserList'
 function HomePage() {
   const users = useSelector(state =>state.userInfo)
   const adminUser = useSelector(state =>state.adminInfo)
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    id:  Math.floor(Math.random() * 110) + 3,
+    name: "",
+    lastName: "",
+  })
 
   const dispatch = useDispatch()
   //  dispatch = action
@@ -30,6 +34,7 @@ function HomePage() {
 
     //this will set the state user to empty after submit
     setUser({
+      id:"",
       name: "",
       age: "",
     })
@@ -42,21 +47,24 @@ function HomePage() {
   
      <form onSubmit={handleSubmit}>
      <input
-        type="hidden"
-        name="id"
-        value={100}
-      />
-      <input
         type="text"
         name="name"
         value={user.name}
         onChange={e => handleChange(e)}
         ref={nameRef}
       />
+
       <input
-        type="number"
+        type="text"
         name="age"
-        value={user.age}
+        value={user.name}
+        onChange={e => handleChange(e)}
+        ref={nameRef}
+      />
+      <input
+        type="hidden"
+        name="id"
+        value={user.id}
         onChange={e => handleChange(e)}
         ref={nameRef}
       />

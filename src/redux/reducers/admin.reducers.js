@@ -1,7 +1,8 @@
-import {SET_ADMIN_INFO} from '../types';
+import { SET_ADMIN_INFO } from '../types';
 
 const initialState = {
     adminInfo: {
+        
         name:'admin jezreel'
     }
 };

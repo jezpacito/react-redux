@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import  users  from './userReducers'
 import adminInfo from './admin.reducers'
+import  users  from './userReducers'
 
 export default combineReducers({
     userInfo:users,

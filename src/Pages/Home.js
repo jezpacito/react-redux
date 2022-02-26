@@ -1,12 +1,17 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { LoggedOut, setLogin } from '../redux/actions/authAction'
 import { deleteUserInfo, setUserInfo, storeUserInfo } from '../redux/actions/userActions'
+import { Is_LoggedIn } from '../redux/types'
 import UserList from './UserList'
 
 function HomePage() {
   const users = useSelector(state =>state.userInfo)
   const adminUser = useSelector(state =>state.adminInfo)
+  const isLogged = useSelector(state => state.isLogged) 
+
+  console.log('isLogged',isLogged)
   const [user, setUser] = useState({
     id:  Math.floor(Math.random() * 110) + 3,
     name: "",
@@ -26,6 +31,9 @@ function HomePage() {
     dispatch(deleteUserInfo(id))
   }
 
+  // const handleLogged = (value) => {
+  //   dispatch(setLogin(value))
+  // }
 
 
   const handleSubmit = e => {
@@ -42,8 +50,11 @@ function HomePage() {
 
   }
 
+ 
+
   return (
     <>
+
   
      <form onSubmit={handleSubmit}>
      <input
@@ -57,7 +68,7 @@ function HomePage() {
       <input
         type="text"
         name="age"
-        value={user.name}
+        value={user.age}
         onChange={e => handleChange(e)}
         ref={nameRef}
       />
@@ -74,6 +85,17 @@ function HomePage() {
       {users.map((user,id)=>(
        <UserList key={id} user={user} handleDelete={handleDelete}/>
       ))}
+
+        <button onClick={(()=>{
+          if(isLogged){
+            dispatch(LoggedOut())
+          }else{
+            dispatch(setLogin())
+          }
+        })}>
+
+          {isLogged?"logout":"login"}
+        </button>
     </>
   )
 }
